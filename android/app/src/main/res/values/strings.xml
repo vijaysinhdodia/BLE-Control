@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Relay Control</string>
+    <string name="title_activity_main">Relay Control</string>
+    <string name="package_name">com.example.relaycontrol</string>
+    <string name="custom_url_scheme">com.example.relaycontrol</string>
+</resources>
