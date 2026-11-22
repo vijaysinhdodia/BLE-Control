@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Relay Control</title>
+<style>
+:root{--bg:#f3f1ec;--panel:#fff;--ink:#1d1f22;--mute:#6b6f76;--line:#d9d6cf;--on:#c2641b;--off:#c9c6bf;--ok:#2f7d4f;--bad:#b3261e}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17181a;--panel:#222427;--ink:#ecebe8;--mute:#9a9ea5;--line:#34373b;--on:#e58a3c;--off:#4a4d52;--ok:#5ec28a;--bad:#ff8a80}}
+:root[data-theme="dark"]{--bg:#17181a;--panel:#222427;--ink:#ecebe8;--mute:#9a9ea5;--line:#34373b;--on:#e58a3c;--off:#4a4d52;--ok:#5ec28a;--bad:#ff8a80}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 "IBM Plex Sans","Segoe UI",system-ui,sans-serif}
+main{max-width:520px;margin:0 auto;padding:20px 16px 32px}
+h1{font-size:22px;margin:0 0 14px;font-weight:600}
+button{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer}
+button:focus-visible{outline:3px solid var(--on);outline-offset:2px}
+#conn,#alloff{width:100%;font-weight:600;margin-bottom:12px}
+#conn.live{border-color:var(--ok);color:var(--ok)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+.row b{display:block}.row small{color:var(--mute)}
+.sw{position:relative;width:76px;height:42px;border-radius:21px;background:var(--off);border:0;padding:0;flex:none}
+.sw::after{content:"";position:absolute;top:4px;left:4px;width:34px;height:34px;border-radius:50%;background:#fff;transition:transform .15s}
+.sw[aria-pressed="true"]{background:var(--on)}
+.sw[aria-pressed="true"]::after{transform:translateX(34px)}
+.sw:disabled,#alloff:disabled{opacity:.45;cursor:not-allowed}
+#log{font:12.5px/1.5 ui-monospace,Consolas,monospace;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:60px;white-space:pre-wrap;word-break:break-all;margin-top:12px}
+.e{color:var(--bad)}.g{color:var(--ok)}
+@media (prefers-reduced-motion:reduce){.sw::after{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<h1>Relay control</h1>
+<button id="conn">Connect to YC_CAR_DEMO</button>
+<div id="list"></div>
+<button id="alloff" disabled>Switch all off</button>
+<div id="log" role="log" aria-live="polite">Not connected.</div>
+</main>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
